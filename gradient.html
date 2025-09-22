@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sandro Martínez Pérez — Portafolio</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+
+    .container {
+      width: min(100%, 960px);
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .site-header {
+
+      background: linear-gradient(180deg, #4480ef, #551cb9);
+      color: white;
+      padding: 3rem 0 2rem;
+      border-bottom: 4px solid rgba(255,255,255,0.2);
+      
+      box-shadow: 0 8px 24px rgba(99, 28, 185, 0.25);
+    }
+    .title { margin: 0; font-size: clamp(1.75rem, 3vw + 1rem, 2.75rem); letter-spacing: 0.2px; }
+    .subtitle { margin: 0.25rem 0 1rem; opacity: 0.95; font-weight: 500; }
+
+    .nav { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.14);
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .nav a:hover { transform: translateY(-1px); background: rgba(255,255,255,0.22); }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      box-shadow: 0 6px 16px rgba(2, 8, 20, 0.06);
+      border: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: clamp(1.25rem, 1.2vw + 1rem, 1.75rem);
+      color: #0f172a;
+    }
+
+    .grid.two {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 700px) {
+      .grid.two { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .k {
+      display: inline-block;
+      min-width: 6.5rem;
+      font-weight: 700;
+      color: #ef4444;
+    }
+
+    .timeline {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1rem;
+    }
+    .timeline li {
+      position: relative;
+      padding-left: 3.25rem;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: 0.9rem;
+      top: 0.35rem;
+      height: calc(100% + 0.35rem);
+      width: 2px;
+      background: #e2e8f0;
+    }
+    .timeline li:last-child::before { height: 0.75rem; }
+    .t-meta {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .t-body a {
+      color: #c70226;
+      text-decoration: none;
+      border-bottom: 1px dashed #c72302;
+    }
+    .t-body a:hover { border-bottom-style: solid; }
+
+    .site-footer {
+      text-align: center;
+      color: #475569;
+      padding: 2rem 0 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="title">Sandro Martínez Pérez</h1>
+      <p class="subtitle">Estudiante de Ciencias de la Computación · Instructor CPC-UAEH</p>
+      <nav class="nav">
+        <a href="#datos">Datos generales</a>
+        <a href="#bio">Biografía</a>
+        <a href="#trabajos">Trabajos recientes</a>
+        <a href="#premios">Premios</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="datos" class="card">
+      <h2>Datos generales</h2>
+      <div class="grid two">
+        <div>
+          <ul class="list">
+            <li><span class="k">Rol:</span> Estudiante de Licenciatura en Ciencias de la Computación (UAEH)</li>
+            <li><span class="k">Ubicación:</span> Pachuca de Soto, Hidalgo, México</li>
+            <li><span class="k">Idiomas:</span> Español (nativo), Inglés (fluido)</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="list">
+            <li><span class="k">Correo:</span> <a href="mailto:virgosmp.mx@gmail.com">virgosmp.mx@gmail.com</a></li>
+            <li><span class="k">Teléfono:</span> <a href="tel:+527295402245">+52 729 540 2245</a></li>
+            <li><span class="k">GitHub:</span> <a href="https://github.com/San-43" target="_blank" rel="noopener">San-43</a></li>
+            <li><span class="k">LinkedIn:</span> <a href="https://www.linkedin.com/in/san43" target="_blank" rel="noopener">san43</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="bio" class="card">
+      <h2>Biografía</h2>
+      <p>
+        Estudiante de la UAEH con graduación esperada en diciembre de 2026 (promedio 95/100).
+        Completó el 60% de la licenciatura en Física y Matemática en la Universidad de La Habana (GPA 91/100).
+        Miembro distinguido e instructor del Club de Programación Competitiva (CPC-UAEH), donde ha coordinado talleres y
+        sesiones semanales para preparar a estudiantes rumbo a competencias ICPC. Participa en el programa Meta Mentees México,
+        fortaleciendo estrategias de algoritmia avanzada. Intereses principales: estructuras de datos y algoritmos, desarrollo
+        web/móvil (React, Flutter, Spring Boot), bases de datos MySQL y Linux.
+      </p>
+    </section>
+
+    <section id="trabajos" class="card">
+      <h2>Trabajos más recientes</h2>
+      <ol class="timeline">
+        <li>
+          <div class="t-meta">2024</div>
+          <div class="t-body">
+            <strong>Smart Home con Arduino</strong> — Sistema de automatización con sensores y actuadores para
+            temperatura, iluminación y seguridad, con interfaz para monitoreo y control en tiempo real.
+          </div>
+        </li>
+        <li>
+          <div class="t-meta">2023</div>
+          <div class="t-body">
+            <strong>Sistema de Clínica Veterinaria (Java, POO)</strong> — Arquitectura modular con optimización de base
+            de datos y funciones para agenda y seguimiento de historial médico.
+          </div>
+        </li>
+        <li>
+          <div class="t-meta">2022</div>
+          <div class="t-body">
+            <strong>Juego Batalla Naval 2D (Java)</strong> — Principios de POO (encapsulación, polimorfismo) y diseño
+            de cuadrícula interactiva. <a href="https://github.com/San-43/Battleship" target="_blank" rel="noopener">Repositorio</a>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="premios" class="card">
+      <h2>Premios y reconocimientos</h2>
+      <ul class="list">
+        <li>Finalista, ICPC México Finals 2024 — Rango 84/120 (Mención Honorífica), Monterrey, México.</li>
+        <li>Finalista, ICPC Gran Premio de México 2024 — Rango 87/482 (Mención Honorífica).</li>
+        <li>Finalista, ICPC Gran Premio de México 2023 — Rango 104/458 (Mención Honorífica).</li>
+        <li>Ganador, Programming Contest — XPOCET (mayo 2024).</li>
+        <li>2.º lugar, Breaking Code — CPC UAEH 2023.</li>
+        <li>Ganador, War Code 1.ª edición — CPC UAEH 2023.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Sandro Martínez Pérez · Portafolio básico</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
