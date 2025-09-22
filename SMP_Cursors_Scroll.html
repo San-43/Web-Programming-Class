@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolls</title>
+    <style type="text/css">
+        .scroll {
+            display: block;
+            border: 1px solid blue;
+            padding: 5px;
+            margin-top: 5px;
+            width: 800px;
+            height: 300px;
+            overflow: scroll;
+        }
+
+        .auto {
+            display: block;
+            border: 1px solid green;
+            padding: 5px;
+            margin-top: 5px;
+            width: 300px;
+            height: 50px;
+            overflow: auto;
+        }
+
+        .scroll.bugs {
+            cursor: pointer; 
+        }
+
+        .scroll.sam {
+            cursor: crosshair; 
+        }
+
+        .scroll.daffy {
+            cursor: wait; 
+        }
+
+        p {
+            cursor: help; 
+        }
+
+        body {
+            cursor: default; 
+        }
+    </style>
+</head>
+
+<body>
+    <p>Bugs Bunny 🐰</p>
+    <div class="scroll bugs">
+        <img src="https://vistapointe.net/images/bugs-bunny-6.jpg" alt="Bugs Bunny">
+        <p>Un conejo gris astuto, relajado y con gran ingenio. Su frase característica es “¿Qué hay de nuevo, viejo?”.
+            Es muy hábil para burlar a sus oponentes con inteligencia y sarcasmo, manteniendo casi siempre la calma.</p>
+    </div>
+    <br>
+
+    <p>Yosemite Sam 🤠</p>
+    <div class="scroll sam">
+        <img src="https://wallpapercave.com/wp/wp2475887.jpg" alt="Yosemite Sam">
+        <p>Un hombre bajito, pelirrojo y bigotón, de carácter explosivo y temperamental. Viste como un vaquero del viejo
+            oeste y suele ser el antagonista de Bugs Bunny, destacando por su mal genio y torpeza.</p>
+    </div>
+    <br>
+
+    <p>Daffy Duck 🦆</p>
+    <div class="scroll daffy">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.C_dJiC5M0wnWlwHWwNr-bgHaH2?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="Daffy Duck">
+        <p>Un pato negro con pico y patas naranjas, conocido por su carácter egocéntrico, impulsivo y algo neurótico.
+            Siempre busca atención y protagonismo, lo que lo lleva a situaciones cómicas y caóticas.</p>
+    </div>
+</body>
+
+</html>
