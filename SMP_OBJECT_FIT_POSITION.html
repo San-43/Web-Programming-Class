@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Copoazú — Theobroma grandiflorum</title>
+  <style>
+    :root {
+      --bg:#f7f7f7;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#2f855a;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    header{
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap{max-width: 980px; margin: 0 auto; padding: 16px;}
+    h1{font-size: 1.8rem; margin: 0 0 4px}
+    .sub{color: var(--muted); margin: 0 0 12px}
+    nav{display:flex; gap:10px; flex-wrap:wrap; margin: 8px 0 0}
+    nav a{
+      text-decoration: none; color: var(--ink);
+      padding: 6px 10px; border:1px solid var(--line); border-radius: 999px;
+      background: #fff;
+    }
+    nav a:hover{border-color:#cbd5e1}
+
+    main{padding: 20px 0}
+    .grid{
+      display: grid; gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width:900px){
+      .grid{grid-template-columns: 2fr 1fr;}
+    }
+    section, aside{
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 10px; padding: 14px;
+    }
+    section h2, .gallery h2{margin: 0 0 8px; font-size: 1.2rem}
+    p{margin: 8px 0}
+    ul{margin: 6px 0 0 18px}
+    li{margin: 4px 0}
+
+    .gallery{margin-top: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px;}
+    .frames{
+      display: grid; gap: 12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width:720px){
+      .frames{grid-template-columns: repeat(2, 1fr);}
+    }
+    .frame{
+      border: 1px dashed #cbd5e1; border-radius: 8px; padding: 8px;
+      background: #fff;
+    }
+    .label{
+      font-size: .9rem; color: var(--muted); margin-bottom: 6px;
+      display:flex; justify-content:space-between; gap: 8px; flex-wrap:wrap;
+    }
+    .media-box{
+      width: 100%; height: 230px;
+      border-radius: 8px; overflow: hidden; border: 1px solid var(--line);
+      background: #f3f4f6;
+    }
+    .media-box img{width:100%; height:100%; display:block;}
+
+    
+    .fit-cover   img{object-fit: cover;}
+    .fit-contain img{object-fit: contain; background:#f8fafc;}
+    .fit-fill    img{object-fit: fill;}
+    .fit-scale   img{object-fit: scale-down; background:#f8fafc;}
+    .fit-none    img{object-fit: none;}
+
+    
+    .pos-top    img{object-position: 50% 0%;}
+    .pos-left   img{object-position: 0% 50%;}
+    .pos-right  img{object-position: 100% 50%;}
+    .pos-bottom img{object-position: 50% 100%;}
+    .pos-focal  img{object-position: 40% 35%;}
+
+    footer{
+      color: var(--muted); text-align:center; padding: 24px 8px;
+      border-top: 1px solid var(--line); margin-top: 20px;
+    }
+
+    
+    .hero{
+      height: 260px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line);
+      margin-top: 10px;
+    }
+    .hero img{width:100%; height:100%; object-fit: cover; object-position: 50% 40%;}
+    .badge{display:inline-block; font-size:.85rem; color:#fff; background: var(--accent); padding: 2px 8px; border-radius: 999px;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Copoazú <span class="badge">Theobroma grandiflorum</span></h1>
+      <p class="sub">Fruta amazónica — familia Malvaceae</p>
+      <nav aria-label="Secciones">
+        <a href="#descripcion">Descripción</a>
+        <a href="#habitat">Hábitat</a>
+        <a href="#usos">Usos</a>
+        <a href="#eco">Importancia ecológica</a>
+        <a href="#galeria">Galería</a>
+      </nav>
+
+      
+      <div class="hero">
+        <img
+          src="https://th.bing.com/th/id/OIP.yXbGrOJtAh4_Lnxxh8vTcAHaEk?w=265&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+          alt="Frutos de copoazú en primer plano" />
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section id="descripcion">
+        <h2>Descripción</h2>
+        <p>El <strong>copoazú</strong> es un árbol tropical de la Amazonia, emparentado con el cacao. Produce
+          frutos grandes de cáscara marrón y pulpa blanca, aromática y ligeramente ácida. Las semillas
+          concentran una grasa vegetal apreciada de forma similar a la manteca de cacao.</p>
+        <p>El árbol puede alcanzar 10–20&nbsp;m de altura. Presenta hojas grandes y flores caulifloras
+          (nacen del tronco o de ramas gruesas). Es común en huertos familiares y sistemas agroforestales.</p>
+
+       
+        <div class="gallery" id="galeria">
+          <h2>Galería (object-fit / object-position)</h2>
+          <div class="frames">
+            
+            <div class="frame fit-cover pos-focal">
+              <div class="label">
+                <span><b>object-fit:</b> cover</span>
+                <span><b>object-position:</b> 40% 35%</span>
+              </div>
+              <div class="media-box">
+                <img
+                  src="https://th.bing.com/th/id/OIP.CEdZsxSu2rWt_rm0rvPkcAHaE8?w=258&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                  alt="Fruto partido mostrando pulpa" />
+              </div>
+            </div>
+
+            
+            <div class="frame fit-contain pos-top">
+              <div class="label">
+                <span><b>object-fit:</b> contain</span>
+                <span><b>object-position:</b> top</span>
+              </div>
+              <div class="media-box">
+                <img
+                  src="https://th.bing.com/th/id/OIP.jZbAqNorACWCDuZ7cqS6aAHaDF?w=307&h=145&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                  alt="Vista alargada del fruto de copoazú" />
+              </div>
+            </div>
+
+            
+            <div class="frame fit-none pos-left">
+              <div class="label">
+                <span><b>object-fit:</b> none</span>
+                <span><b>object-position:</b> left</span>
+              </div>
+              <div class="media-box">
+                <img
+                  src="https://th.bing.com/th/id/OIP.ZQLHPd8PBCsct2zX4Ld1cwHaEK?w=312&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                  alt="Detalle de semillas de copoazú" />
+              </div>
+            </div>
+
+            
+            <div class="frame fit-scale pos-right">
+              <div class="label">
+                <span><b>object-fit:</b> scale-down</span>
+                <span><b>object-position:</b> right</span>
+              </div>
+              <div class="media-box">
+                <img
+                  src="https://th.bing.com/th/id/OIP.ahXQ5oUEQtqgW5_UJlw_JAHaE5?w=255&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                  alt="Semillas y pulpa del copoazú" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside aria-label="Ficha rápida">
+        <h2>Ficha rápida</h2>
+        <ul>
+          <li><b>Nombre científico:</b> <em>Theobroma grandiflorum</em></li>
+          <li><b>Origen:</b> Cuenca Amazónica (Brasil, Perú, Bolivia, Colombia)</li>
+          <li><b>Parte comestible:</b> pulpa (principal) y semillas</li>
+          <li><b>Uso común:</b> bebidas, postres, manteca para alimentos y cosmética</li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="grid" style="margin-top: 12px">
+      <section id="habitat">
+        <h2>Hábitat</h2>
+        <p>Crece en <strong>bosques húmedos tropicales</strong> de tierras bajas. Prefiere suelos
+          profundos, bien drenados, alta humedad ambiental y lluvias superiores a 1,500&nbsp;mm/año.
+          Tolera media sombra durante su etapa juvenil y se adapta bien a sistemas agroforestales.</p>
+      </section>
+
+      <section id="usos">
+        <h2>Usos</h2>
+        <ul>
+          <li><b>Alimentos:</b> jugos, néctares, helados, mermeladas, postres; la pulpa es aromática y ácida.</li>
+          <li><b>Grasas:</b> la “manteca de copoazú” de las semillas se usa como análogo a la manteca de cacao.</li>
+          <li><b>Cosmética:</b> emolientes e hidratantes por su perfil lipídico.</li>
+          <li><b>Agroforestería:</b> diversifica ingresos y aporta sombra controlada en plantaciones mixtas.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="grid" style="margin-top: 12px">
+      <section id="eco">
+        <h2>Importancia ecológica</h2>
+        <ul>
+          <li><b>Polinización:</b> principalmente por pequeños dípteros, similar al cacao.</li>
+          <li><b>Dispersión:</b> fauna frugívora que favorece la regeneración natural en bosques.</li>
+          <li><b>Servicios ecosistémicos:</b> mejora cobertura arbórea, ciclado de nutrientes y conectividad del paisaje.</li>
+          <li><b>Conservación:</b> su manejo sostenible apoya economías locales y reduce presión sobre bosques primarios.</li>
+        </ul>
+      </section>
+
+      <section aria-label="Notas técnicas">
+        <h2>Notas de maquetación</h2>
+        <ul>
+          <li>Las cajas fijan altura y recorte con <code>object-fit</code>.</li>
+          <li><code>object-position</code> “mueve” el foco (p. ej. <code>left</code>, <code>50% 0%</code>).</li>
+          <li>Las mismas clases funcionan con <code>&lt;img&gt;</code> o <code>&lt;video&gt;</code>.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Copoazú — página informativa.
+  </footer>
+</body>
+</html>
