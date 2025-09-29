@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ropa Vieja – Cocina cubana</title>
+  <style>
+    :root{
+      --bg:#faf7f2; --ink:#1e1e1e; --accent:#d33f2f; --muted:#6b6b6b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.6}
+    header{padding:2.5rem 1rem 1.25rem;background:linear-gradient(180deg,#ffe7e2,transparent)}
+    .wrap{max-width:1000px;margin:0 auto;padding:0 1rem}
+    h1{margin:0 0 .25rem;font-size:clamp(1.8rem,4vw,2.6rem);}
+    .subtitle{color:var(--muted)}
+
+    main{padding:1rem 0 3rem}
+    section{background:white;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.06);padding:1.25rem; margin:1rem 0}
+    section h2{margin-top:0;color:var(--accent)}
+
+    .shape{max-width:320px;width:40%;min-width:220px;margin:0 1rem 1rem 0;float:left;border-radius:24px;clip-path:ellipse(70% 50% at 50% 50%);shape-outside:ellipse(70% 50% at 50% 50%);}
+    .shape.right{float:right;margin:0 0 1rem 1rem;}
+    .shape.circle{border-radius:50%;clip-path:circle(48% at 50% 50%);shape-outside:circle(48%);}
+
+    figcaption{font-size:.9rem;color:var(--muted);text-align:center;margin-top:.25rem}
+    figure{margin:0}
+
+    ul{padding-left:1.1rem}
+    li{margin:.25rem 0}
+
+    .grid{display:grid;gap:1rem}
+    @media (min-width:800px){
+      .grid{grid-template-columns:1fr 2fr}
+    }
+    .card{background:#fff6f5;border:1px solid #ffe0dc;padding:1rem;border-radius:14px}
+    .step{display:flex;gap:.75rem;align-items:flex-start;margin:.5rem 0}
+    .badge{min-width:28px;height:28px;border-radius:999px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+
+    .clearfix::after{content:"";display:block;clear:both}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Ropa Vieja</h1>
+      <p class="subtitle">Clásico de la cocina cubana — descripción, historia, variedades y receta casera.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="clearfix" id="descripcion">
+      <figure class="shape circle">
+        <img src="https://th.bing.com/th/id/OIP.NMUJ5m-pjcPvrI__RstBMwHaE3?w=267&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Plato de ropa vieja cubana" style="width:100%;height:auto;display:block" />
+        <figcaption>Ropa vieja tradicional con arroz blanco.</figcaption>
+      </figure>
+      <h2>Descripción</h2>
+      <p>
+        La <strong>ropa vieja</strong> es un guiso de carne deshebrada (habitualmente falda o pecho de res) cocinado lentamente con sofrito de
+        cebolla, pimiento, ajo y tomate. Su nombre alude a los <em>hilos</em> de carne que recuerdan a ropa desgarrada.
+        Se sirve comúnmente con arroz blanco, plátanos maduros fritos y frijoles negros.
+      </p>
+      <p>
+        La clave del plato está en la cocción lenta, que concentra sabores y deja la carne muy tierna. El resultado es un estofado aromático,
+        ligeramente dulce por el pimiento y el tomate, y con notas especiadas de comino, laurel y orégano.
+      </p>
+    </section>
+
+    <section class="clearfix" id="historia">
+      <figure class="shape right">
+        <img src="https://th.bing.com/th/id/OIP.oYwToaOQCTU8tNMOWOF-tgHaFj?w=202&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Cazuela de ropa vieja" style="width:100%;height:auto;display:block" />
+        <figcaption>Cazuela lista para servir.</figcaption>
+      </figure>
+      <h2>Historia</h2>
+      <p>
+        El origen del plato se asocia a influencias hispano‑canarias que llegaron a Cuba y el Caribe. Con el tiempo, la receta se adaptó a los ingredientes locales
+        y a los gustos de la isla, incorporando el clásico trío del sofrito caribeño: <em>cebolla, pimiento y ajo</em>.
+      </p>
+      <p>
+        Hoy, la ropa vieja es un emblema de la gastronomía cubana y se disfruta tanto en hogares como en <em>paladares</em> y restaurantes tradicionales.
+      </p>
+    </section>
+
+    <section id="variedades">
+      <h2>Variedades</h2>
+      <ul>
+        <li><strong>Clásica de res:</strong> con falda o pecho, comino, laurel y un toque de vino seco.</li>
+        <li><strong>Con pimiento rojo asado:</strong> intensifica el dulzor y aporta color vibrante.</li>
+        <li><strong>Versión con pollo:</strong> alternativa más ligera, mantiene el mismo sofrito.</li>
+        <li><strong>Con aceitunas y alcaparras:</strong> añade un matiz salino de estilo criollo.</li>
+        <li><strong>Picante:</strong> incluye ají o chile al gusto para un acabado más atrevido.</li>
+      </ul>
+    </section>
+
+    <section id="receta">
+      <h2>Receta básica (4–6 porciones)</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Ingredientes</h3>
+          <ul>
+            <li>1–1.2 kg de falda/pecho de res (o pollo deshebrado)</li>
+            <li>2 cebollas en plumas</li>
+            <li>1–2 pimientos (rojo/verde) en tiras</li>
+            <li>4 dientes de ajo picados</li>
+            <li>400 g de tomate triturado</li>
+            <li>1 cda de comino molido</li>
+            <li>1 cdta de orégano seco</li>
+            <li>2 hojas de laurel</li>
+            <li>1/2 taza de vino seco (opcional)</li>
+            <li>Sal, pimienta y aceite</li>
+          </ul>
+        </div>
+        <div>
+          <figure class="shape right">
+            <img src="https://th.bing.com/th/id/OIP.EXNYTAb_l6gu1JNy5BcKpwHaE7?w=297&h=198&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Ropa vieja servida con arroz" style="width:100%;height:auto;display:block" />
+            <figcaption>Servido con arroz blanco y plátano.</figcaption>
+          </figure>
+          <h3>Preparación</h3>
+          <div class="step"><span class="badge">1</span><p>Cocer la carne en agua con sal y laurel hasta que esté muy tierna. Deshebrar y reservar caldo.</p></div>
+          <div class="step"><span class="badge">2</span><p>Sofreír cebolla y pimientos en aceite. Añadir ajo; cocinar 1 minuto.</p></div>
+          <div class="step"><span class="badge">3</span><p>Incorporar tomate, comino y orégano. Agregar vino seco y un poco del caldo de cocción.</p></div>
+          <div class="step"><span class="badge">4</span><p>Sumar la carne deshebrada. Cocer a fuego bajo 15–20 min hasta que espese. Ajustar sal y pimienta.</p></div>
+          <div class="step"><span class="badge">5</span><p>Servir con arroz blanco, frijoles negros y plátanos maduros fritos.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

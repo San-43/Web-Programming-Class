@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bora Bora</title>
+<style>
+:root{--ink:#0f172a;--muted:#596372;--bg:#f6f8fb;--card:#ffffff;--line:#e5e9f0;--accent:#0ea5e9}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.hero{min-height:48vh;display:flex;align-items:end;position:relative;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.6))}
+.hero .bg{position:absolute;inset:0;background:url('https://th.bing.com/th/id/OIP.uPCpUxrZOrbpwrjys_bX6gHaEK?w=273&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3') center/cover no-repeat}
+.hero .inner{position:relative;z-index:1;width:100%;padding:22px}
+h1{margin:6px 0 0;font-size:clamp(26px,5vw,42px)}
+.lead{margin:6px 0;color:#e6eef6}
+section{background:var(--card);border-radius:16px;box-shadow:0 12px 26px rgba(10,20,45,.06);padding:16px;margin:14px 0}
+section h2{margin:0 0 6px;color:var(--accent)}
+section p{margin:8px 0}
+.grid{display:grid;gap:12px}
+@media(min-width:880px){.grid.cols-2{grid-template-columns:1.2fr 1fr}}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pill{background:#ecfeff;border:1px solid #ccefff;border-radius:999px;padding:6px 10px;font-size:.95rem}
+.gallery{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:720px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1040px){.gallery{grid-template-columns:repeat(4,1fr)}}
+.gallery a{display:block;border-radius:12px;overflow:hidden;box-shadow:0 8px 18px rgba(15,23,42,.12);transform:translateZ(0)}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.gallery a:hover img{transform:scale(1.05)}
+.caption{font-size:.9rem;color:var(--muted);text-align:center;margin-top:6px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.lightbox:target{display:flex}
+.lightbox figure{max-width:min(1000px,92vw);max-height:86vh;margin:0}
+.lightbox img{width:100%;height:100%;object-fit:contain;display:block}
+.close{position:fixed;top:14px;right:14px;background:#fff;border-radius:999px;padding:8px 12px;color:#111;text-decoration:none;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+footer{color:var(--muted);font-size:.9rem;text-align:center;padding:24px 12px}
+.carousel{position:relative;background:var(--card);border-radius:16px;box-shadow:0 12px 26px rgba(10,20,45,.06);padding:10px}
+.carousel .viewport{overflow:hidden;border-radius:12px}
+.carousel .slides{display:flex;width:600%;transition:transform .5s ease}
+.carousel .slide{flex:0 0 16.6666%;max-height:60vh}
+.carousel img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel .dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.carousel .dots label{width:10px;height:10px;border-radius:999px;background:#cfe6ff;cursor:pointer}
+.carousel .nav{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border-radius:999px;padding:8px 12px;box-shadow:0 8px 18px rgba(0,0,0,.25);font-weight:700;cursor:pointer;user-select:none}
+.carousel .prev{left:12px}
+.carousel .next{right:12px}
+#c1:checked ~ .viewport .slides{transform:translateX(0)}
+#c2:checked ~ .viewport .slides{transform:translateX(-16.6666%)}
+#c3:checked ~ .viewport .slides{transform:translateX(-33.3333%)}
+#c4:checked ~ .viewport .slides{transform:translateX(-50%)}
+#c5:checked ~ .viewport .slides{transform:translateX(-66.6666%)}
+#c6:checked ~ .viewport .slides{transform:translateX(-83.3333%)}
+#c1:checked ~ .dots label:nth-child(1),
+#c2:checked ~ .dots label:nth-child(2),
+#c3:checked ~ .dots label:nth-child(3),
+#c4:checked ~ .dots label:nth-child(4),
+#c5:checked ~ .dots label:nth-child(5),
+#c6:checked ~ .dots label:nth-child(6){background:#0ea5e9}
+#c1:checked ~ .nav.prev{display:block}
+#c2:checked ~ .nav.prev{display:none}
+.carousel .nav.s2,.carousel .nav.s3,.carousel .nav.s4,.carousel .nav.s5,.carousel .nav.s6{display:none}
+#c2:checked ~ .nav.s2{display:block}
+#c3:checked ~ .nav.s3{display:block}
+#c4:checked ~ .nav.s4{display:block}
+#c5:checked ~ .nav.s5{display:block}
+#c6:checked ~ .nav.s6{display:block}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="bg"></div>
+  <div class="inner wrap">
+    <h1>Bora Bora</h1>
+    <p class="lead">Datos generales, atractivos y actividades turísticas. Galería con ampliación.</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="grid cols-2">
+    <div>
+      <h2>Datos generales</h2>
+      <p>Isla de la Polinesia Francesa en el archipiélago de la Sociedad. Destaca por su laguna turquesa, motus con playas de arena clara y aguas tranquilas protegidas por arrecife.</p>
+      <div class="pills">
+        <span class="pill">Ubicación: Polinesia Francesa</span>
+        <span class="pill">Clima: tropical</span>
+        <span class="pill">Idioma: francés y tahitiano</span>
+        <span class="pill">Moneda: franco CFP</span>
+      </div>
+    </div>
+    <div>
+      <h2>Atractivos</h2>
+      <p>Laguna con tonos azules intensos, arrecifes para snorkel, miradores del monte Otemanu, bungalows sobre el agua y puestas de sol con horizonte abierto.</p>
+    </div>
+  </section>
+  <section>
+    <h2>Galería</h2>
+    <div class="gallery">
+      <a href="#img1"><img src="https://th.bing.com/th/id/OIP.uPCpUxrZOrbpwrjys_bX6gHaEK?w=273&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Laguna turquesa"></a>
+      <a href="#img2"><img src="https://th.bing.com/th/id/OIP.eFaxjZh8Kkeb9nK5qEEtMgHaE8?w=225&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Bungalow sobre el agua"></a>
+      <a href="#img3"><img src="https://th.bing.com/th/id/OIP.LeOMS6F9kA-ViZIvP9HoxgHaEK?w=306&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Vista del monte Otemanu"></a>
+      <a href="#img4"><img src="https://th.bing.com/th/id/OIP.0Y62Fvb9sQQlXB_3MzUY9gHaE8?w=258&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Playa y palmeras"></a>
+      <a href="#img5"><img src="https://th.bing.com/th/id/OIP.IFz_E1g5fUoTsN_v5Nn8iQHaEo?w=274&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Barco en la laguna"></a>
+      <a href="#img6"><img src="https://th.bing.com/th/id/OIP.CUbVszj_kSJRs0Wn5ERHZAHaHa?w=171&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Vista aérea de motu"></a>
+      <a href="#img7"><img src="https://th.bing.com/th/id/OIP.v2J2WMN1M3qGbDhN-6AnZgHaE8?w=224&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Pasarela a bungalows"></a>
+      <a href="#img8"><img src="https://th.bing.com/th/id/OIP.LLagR0yKg1qNzBKn7awzoAHaEK?w=380&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Cielo y laguna"></a>
+      <a href="#img9"><img src="https://th.bing.com/th/id/OIP.Vy1XtQKwY4WetkUgRc1CWAHaE8?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Sombrillas en la playa"></a>
+      <a href="#img10"><img src="https://th.bing.com/th/id/OIP._EXIXKQeSVFZYIrPEp_8bAHaE8?w=269&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Kayaks sobre aguas claras"></a>
+    </div>
+    <p class="caption">Haz clic para ampliar.</p>
+  </section>
+  <section>
+    <h2>Actividades turísticas</h2>
+    <p>Snorkel y buceo en arrecife, paseos en barco por la laguna, kayak y paddle, rutas 4x4 a miradores, spas y cenas frente al mar, recorridos culturales y mercados locales.</p>
+  </section>
+  <section>
+    <h2>Carrusel</h2>
+    <div class="carousel">
+      <input type="radio" name="c" id="c1" checked>
+      <input type="radio" name="c" id="c2">
+      <input type="radio" name="c" id="c3">
+      <input type="radio" name="c" id="c4">
+      <input type="radio" name="c" id="c5">
+      <input type="radio" name="c" id="c6">
+      <div class="viewport">
+        <div class="slides">
+          <figure class="slide"><img src="https://th.bing.com/th/id/OIP.uPCpUxrZOrbpwrjys_bX6gHaEK?w=273&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Laguna"></figure>
+          <figure class="slide"><img src="https://th.bing.com/th/id/OIP.eFaxjZh8Kkeb9nK5qEEtMgHaE8?w=225&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Bungalows"></figure>
+          <figure class="slide"><img src="https://th.bing.com/th/id/OIP.LeOMS6F9kA-ViZIvP9HoxgHaEK?w=306&h=180&c=7&dpr=1.3&r=0&o=7&pid=1.7&rm=3" alt="Otemanu"></figure>
+          <figure class="slide"><img src="https://th.bing.com/th/id/OIP.0Y62Fvb9sQQlXB_3MzUY9gHaE8?w=258&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Playa"></figure>
+          <figure class="slide"><img src="https://th.bing.com/th/id/OIP.IFz_E1g5fUoTsN_v5Nn8iQHaEo?w=274&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Barco"></figure>
+          <figure class="slide"><img src="https://th.bing.com/th/id/OIP.CUbVszj_kSJRs0Wn5ERHZAHaHa?w=171&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Motu"></figure>
+        </div>
+      </div>
+      <div class="dots">
+        <label for="c1"></label>
+        <label for="c2"></label>
+        <label for="c3"></label>
+        <label for="c4"></label>
+        <label for="c5"></label>
+        <label for="c6"></label>
+      </div>
+      <label class="nav prev" for="c6">‹</label>
+      <label class="nav next" for="c2">›</label>
+      <label class="nav prev s2" for="c1">‹</label>
+      <label class="nav next s2" for="c3">›</label>
+      <label class="nav prev s3" for="c2">‹</label>
+      <label class="nav next s3" for="c4">›</label>
+      <label class="nav prev s4" for="c3">‹</label>
+      <label class="nav next s4" for="c5">›</label>
+      <label class="nav prev s5" for="c4">‹</label>
+      <label class="nav next s5" for="c6">›</label>
+      <label class="nav prev s6" for="c5">‹</label>
+      <label class="nav next s6" for="c1">›</label>
+    </div>
+  </section>
+</main>
+<a id="img1" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.uPCpUxrZOrbpwrjys_bX6gHaEK?w=273&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Laguna turquesa"></figure><span class="close" aria-label="Cerrar">×</span></a>
+<a id="img2" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.eFaxjZh8Kkeb9nK5qEEtMgHaE8?w=225&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Bungalow sobre el agua"></figure><span class="close">×</span></a>
+<a id="img3" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.LeOMS6F9kA-ViZIvP9HoxgHaEK?w=306&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Otemanu"></figure><span class="close">×</span></a>
+<a id="img4" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.0Y62Fvb9sQQlXB_3MzUY9gHaE8?w=258&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Playa y palmeras"></figure><span class="close">×</span></a>
+<a id="img5" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.IFz_E1g5fUoTsN_v5Nn8iQHaEo?w=274&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Barco en laguna"></figure><span class="close">×</span></a>
+<a id="img6" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.CUbVszj_kSJRs0Wn5ERHZAHaHa?w=171&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Motu"></figure><span class="close">×</span></a>
+<a id="img7" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.v2J2WMN1M3qGbDhN-6AnZgHaE8?w=224&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Pasarela"></figure><span class="close">×</span></a>
+<a id="img8" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.LLagR0yKg1qNzBKn7awzoAHaEK?w=380&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Cielo y laguna"></figure><span class="close">×</span></a>
+<a id="img9" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP.Vy1XtQKwY4WetkUgRc1CWAHaE8?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Sombrillas"></figure><span class="close">×</span></a>
+<a id="img10" class="lightbox" href="#close"><figure><img src="https://th.bing.com/th/id/OIP._EXIXKQeSVFZYIrPEp_8bAHaE8?w=269&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Kayaks"></figure><span class="close">×</span></a>
+</body>
+</html>
