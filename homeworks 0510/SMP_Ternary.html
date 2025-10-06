@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Noche vs Océano — Demo con operador ternario</title>
+<style>
+  :root{--bg:#0b1020;--fg:#e5f0ff;--card:#121831;--accent:#61dafb}
+  body[data-theme="sea"]{--bg:#062a3b;--fg:#e9fcff;--card:#08384d;--accent:#46e3b7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Arial,sans-serif;line-height:1.5}
+  header{padding:18px 14px;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent)}
+  h1{margin:0;font-size:1.25rem;letter-spacing:.3px}
+  .wrap{max-width:1000px;margin:0 auto;padding:14px}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+  .btn{border:1px solid rgba(255,255,255,.25);background:var(--card);color:var(--fg);padding:8px 14px;border-radius:10px;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#042132;border-color:transparent;font-weight:700}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+  .hero img{width:100%;height:280px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.2)}
+  .card{background:var(--card);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  figure{margin:0;display:flex;flex-direction:column}
+  figure img{width:100%;height:160px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.2)}
+  figcaption{font-size:.9rem;opacity:.85;margin-top:6px}
+  .section{display:none}
+  body[data-theme="night"] .night{display:block}
+  body[data-theme="sea"] .sea{display:block}
+  footer{opacity:.8;text-align:center;padding:18px 10px}
+  @media (max-width:720px){.hero{grid-template-columns:1fr}.hero img{height:220px}}
+</style>
+</head>
+<body data-theme="night">
+  <header>
+    <div class="wrap">
+      <h1>Noche vs Océano(operador ternario)</h1>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="controls">
+      <button class="btn primary" onclick="setTheme('night')">Ver Cielo Nocturno</button>
+      <button class="btn" onclick="setTheme('sea')">Ver Océano</button>
+    </div>
+
+    <section class="hero card">
+      <img id="hero" alt="Imagen principal">
+      <div>
+        <h2 id="title" style="margin:0 0 6px"></h2>
+        <p id="subtitle" style="margin:0;opacity:.9"></p>
+      </div>
+    </section>
+
+    <section class="night section" aria-label="Galería nocturna">
+      <h3 style="margin:18px 0 10px">Galería • Cielo nocturno</h3>
+      <div class="grid">
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Aurora_Borealis.jpg" alt="Aurora boreal">
+          <figcaption>Aurora boreal desde la órbita terrestre.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Milkyway_nightsky_longexposure_photography_%281%29_02.jpg" alt="Vía Láctea a larga exposición">
+          <figcaption>Vía Láctea capturada con larga exposición.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Andromeda_Galaxy_M31_-_Heic1502a_10k.jpg/2560px-Andromeda_Galaxy_M31_-_Heic1502a_10k.jpg" alt="Detalle de la galaxia de Andrómeda">
+          <figcaption>Detalle de Andrómeda obtenido por Hubble.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sea section" aria-label="Galería marina">
+      <h3 style="margin:18px 0 10px">Galería • Océano</h3>
+      <div class="grid">
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Waves_breaking_on_ocean_coast.jpg" alt="Olas rompiendo en la costa">
+          <figcaption>Olas rompiendo en la costa.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Underwater_photo_of_coral_reef.jpg" alt="Arrecife de coral bajo el agua">
+          <figcaption>Arrecife de coral multiespecie.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Bioluminiscence_at_Bhimili_beach_01.jpg" alt="Plancton bioluminiscente de noche">
+          <figcaption>Bioluminiscencia costera.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer>Imágenes: Wikimedia Commons. Esta demo alterna contenido con un operador ternario.</footer>
+
+<script>
+  const nightHero = "https://upload.wikimedia.org/wikipedia/commons/6/63/Aurora_Borealis.jpg";
+  const seaHero   = "https://upload.wikimedia.org/wikipedia/commons/c/cd/Mar_de_Coral_1.jpg";
+
+  function setTheme(theme){
+    const isNight = theme === "night";
+    document.body.dataset.theme = theme;
+    const hero = document.getElementById("hero");
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+
+    hero.src = isNight ? nightHero : seaHero;
+    hero.alt = isNight ? "Aurora boreal sobre la Tierra" : "Vista aérea del Mar de Coral";
+    title.textContent = isNight ? "Cielo nocturno" : "Océano";
+    subtitle.textContent = isNight
+      ? "Nebulosas, galaxias y auroras: luz en la oscuridad."
+      : "Olas, arrecifes y vida marina: azul en movimiento.";
+  }
+
+  setTheme("night");
+</script>
+</body>
+</html>

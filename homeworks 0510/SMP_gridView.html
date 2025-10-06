@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dólar neozelandés de 5 NZD — Grid view</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;line-height:1.6;background:#f6fafc;color:#12202a}
+h1,h2{margin:0 0 10px}
+p{margin:0 0 10px}
+.wrapper{max-width:1100px;margin:24px auto;padding:0 14px;display:grid;gap:16px}
+.grid{
+  display:grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr;
+  grid-template-areas:
+    "tit tit tit"
+    "front back data";
+  gap:16px
+}
+.header{grid-area:tit;background:#fff;border:1px solid #e6edf4;border-radius:12px;padding:14px}
+.card{background:#fff;border:1px solid #e6edf4;border-radius:12px;padding:12px}
+.front{grid-area:front}
+.back{grid-area:back}
+.data{grid-area:data}
+.note{
+  width:100%;
+  aspect-ratio: 5 / 2;
+  background:#f0f6ff;
+  border:1px solid #dbe7f5;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden
+}
+.note img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block
+}
+.kv{display:grid;grid-template-columns:1fr;gap:10px}
+.row{display:flex;gap:8px;align-items:flex-start;background:#f7fbff;border:1px solid #e4eef8;border-radius:10px;padding:8px 10px}
+.badge{min-width:110px;font-size:.85rem;background:#e0f2fe;color:#075985;border-radius:999px;padding:2px 8px;text-align:center}
+@media (max-width:960px){
+  .grid{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "tit tit"
+      "front back"
+      "data data"
+  }
+}
+@media (max-width:560px){
+  .grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tit"
+      "front"
+      "back"
+      "data"
+  }
+}
+footer{text-align:center;color:#476173;font-size:.95rem;padding:18px 10px 28px}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <section class="grid">
+    <header class="header">
+      <h1>Billete de 5 dólares de Nueva Zelanda (NZD)</h1>
+      <p>Simulación en cuadrícula con dos caras e información general del billete.</p>
+    </header>
+
+    <article class="card front">
+      <h2>Anverso</h2>
+      <div class="note">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/New_Zealand_five-dollar_banknote%2C_Series_7.jpg/250px-New_Zealand_five-dollar_banknote%2C_Series_7.jpg" alt="Anverso del billete de 5 dólares NZ: Sir Edmund Hillary y Aoraki/Mount Cook">
+      </div>
+      <p style="margin-top:8px">Sir Edmund Hillary, Aoraki/Mount Cook y elementos alpinos.</p>
+    </article>
+
+    <article class="card back">
+      <h2>Reverso</h2>
+      <div class="note">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/New_Zealand_5_dollar_note_reverse_series_7.jpg/250px-New_Zealand_5_dollar_note_reverse_series_7.jpg" alt="Reverso del billete de 5 dólares NZ: pingüino hoiho y paisaje costero">
+      </div>
+      <p style="margin-top:8px">Pingüino de ojo amarillo (hoiho), flora nativa y costa neozelandesa.</p>
+    </article>
+
+    <aside class="card data">
+      <h2>Datos generales</h2>
+      <div class="kv" style="margin-top:6px">
+        <div class="row"><span class="badge">País</span><div>Nueva Zelanda</div></div>
+        <div class="row"><span class="badge">Denominación</span><div>5 dólares neozelandeses (NZD)</div></div>
+        <div class="row"><span class="badge">Serie</span><div>Serie 7 (ejemplo de diseño moderno)</div></div>
+        <div class="row"><span class="badge">Material</span><div>Polímero</div></div>
+        <div class="row"><span class="badge">Dimensiones</span><div>Aproximadas para referencia educativa</div></div>
+        <div class="row"><span class="badge">Color</span><div>Gamas naranja y ocres en el anverso; tonos azules/verdosos en el reverso</div></div>
+        <div class="row"><span class="badge">Motivos</span><div>Sir Edmund Hillary; Aoraki/Mt. Cook; hoiho; flora y paisaje costero</div></div>
+        <div class="row"><span class="badge">Seguridad</span><div>Ventana transparente, elementos microimpresos y tintas especiales</div></div>
+        <div class="row"><span class="badge">Uso</span><div>Circulación general en el sistema monetario de Nueva Zelanda</div></div>
+      </div>
+    </aside>
+  </section>
+</div>
+
+<footer>© 2025 • Vista educativa en grid del billete de 5 NZD</footer>
+</body>
+</html>

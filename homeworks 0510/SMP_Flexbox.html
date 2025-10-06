@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ceiba de Cuba — Datos, Hábitat, Taxonomía y Usos</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1f2a33;
+      background: #f7fbff;
+    }
+    header {
+      background: #0f766e;
+      color: #fff;
+      padding: 16px;
+    }
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .brand {
+      font-size: 1.25rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #e6fffb;
+      text-decoration: none;
+      background: rgba(255,255,255,0.12);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.22);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 18px auto 40px;
+      padding: 0 14px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .col {
+      flex: 1 1 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-width: 280px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5eef5;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      color: #0f4c5c;
+    }
+    .card p {
+      margin: 0 0 10px;
+      text-align: justify;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #075985;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-right: 6px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .gallery figure {
+      margin: 0;
+      background: #fff;
+      border: 1px solid #e5eef5;
+      border-radius: 10px;
+      overflow: hidden;
+      flex: 1 1 220px;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery figcaption {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      color: #344b5a;
+      background: #f8fbff;
+    }
+    .list {
+      padding-left: 18px;
+      margin: 6px 0 0;
+    }
+    .kv {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .kv div {
+      background: #f1f9ff;
+      border: 1px solid #e1eef8;
+      border-radius: 8px;
+      padding: 8px 10px;
+      flex: 1 1 220px;
+      min-width: 200px;
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="brand">Ceiba de Cuba</div>
+      <nav>
+        <a href="#datos">Datos generales</a>
+        <a href="#descripcion">Descripción</a>
+        <a href="#habitat">Hábitat</a>
+        <a href="#taxonomia">Taxonomía</a>
+        <a href="#usos">Usos</a>
+        <a href="#galeria">Galería</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="col">
+      <article id="datos" class="card">
+        <h2>Datos generales</h2>
+        <p>
+          La <strong>ceiba</strong> (comúnmente llamada “ceiba de Cuba”) es un árbol tropical de gran porte
+          reconocido por su tronco robusto, raíces tabulares (contrafuertes) y su valor cultural.
+          La especie más representativa es <em>Ceiba pentandra</em>, perteneciente a la familia Malvaceae.
+        </p>
+        <div class="kv">
+          <div><span class="badge">Nombre común</span> Ceiba, Kapok</div>
+          <div><span class="badge">Nombre científico</span> <em>Ceiba pentandra</em> (L.) Gaertn.</div>
+          <div><span class="badge">Familia</span> Malvaceae (antes Bombacaceae)</div>
+          <div><span class="badge">Altura</span> 20–60 m (puede superar 70 m en condiciones ideales)</div>
+          <div><span class="badge">Longevidad</span> Alta, árboles ancestrales en sitios sagrados</div>
+          <div><span class="badge">Distribución</span> Neotrópicos; presente en el Caribe y Cuba</div>
+        </div>
+      </article>
+
+      <article id="habitat" class="card">
+        <h2>Hábitat</h2>
+        <p>
+          Habita en <strong>bosques tropicales y subtropicales</strong>, usualmente en zonas bajas y medianas
+          con suelos profundos y bien drenados. Tolera periodos de sequía una vez establecida y
+          se encuentra cerca de riberas, sabanas arboladas y claros del bosque.
+        </p>
+        <ul class="list">
+          <li><strong>Clima:</strong> cálido a húmedo; sensible a heladas.</li>
+          <li><strong>Suelo:</strong> franco a franco-arenoso; buen drenaje.</li>
+          <li><strong>Luz:</strong> preferencia por exposición plena (pleno sol) en fase adulta.</li>
+          <li><strong>Asociaciones:</strong> forma parte del dosel superior del bosque.</li>
+        </ul>
+      </article>
+
+      <article id="usos" class="card">
+        <h2>Usos</h2>
+        <p>
+          La ceiba tiene usos <strong>culturales, industriales y ecológicos</strong>. Destaca por proveer
+          hábitat para fauna, sombra en comunidades y materiales aprovechables.
+        </p>
+        <ul class="list">
+          <li><strong>Fibra (kapok):</strong> fibras sedosas y livianas en los frutos para relleno y aislante.</li>
+          <li><strong>Madera:</strong> ligera; empleada en artesanías, cajas y usos locales.</li>
+          <li><strong>Medicina tradicional:</strong> distintas partes se usan en infusiones y preparados locales.</li>
+          <li><strong>Ornamental y cultural:</strong> árbol de referencia en plazas y sitios sagrados.</li>
+          <li><strong>Servicios ecosistémicos:</strong> refugio para aves, polinizadores y otros organismos.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="col">
+      <article id="descripcion" class="card">
+        <h2>Descripción</h2>
+        <p>
+          Árbol de copa ancha y tronco recto, con <strong>raíces tabulares</strong> prominentes que brindan
+          estabilidad. El tronco puede presentar <em>acículas o espinas</em> en ejemplares jóvenes. Las hojas son
+          <strong>palmadas</strong>, compuestas por 5–9 folíolos. Las flores, grandes y vistosas, suelen ser
+          blanquecinas o crema; los frutos son cápsulas que liberan semillas envueltas en <em>kapok</em>.
+        </p>
+        <p>
+          Especímenes maduros pueden alcanzar alturas notables, contribuyendo al dosel del bosque.
+          Su crecimiento es rápido en etapas juveniles bajo condiciones favorables.
+        </p>
+      </article>
+
+      <article id="taxonomia" class="card">
+        <h2>Taxonomía</h2>
+        <div class="kv">
+          <div><span class="badge">Reino</span> Plantae</div>
+          <div><span class="badge">División</span> Tracheophyta</div>
+          <div><span class="badge">Clase</span> Magnoliopsida</div>
+          <div><span class="badge">Orden</span> Malvales</div>
+          <div><span class="badge">Familia</span> Malvaceae</div>
+          <div><span class="badge">Género</span> <em>Ceiba</em></div>
+          <div><span class="badge">Especie</span> <em>Ceiba pentandra</em></div>
+        </div>
+        <p style="margin-top:10px;">
+          En Cuba, el término “ceiba” suele referirse a <em>C. pentandra</em>, ampliamente reconocida en el Caribe.
+        </p>
+      </article>
+
+      <article id="galeria" class="card">
+        <h2>Galería</h2>
+        <div class="gallery">
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.LqPsDGsobdi20pQzYAlI_QHaFS?w=245&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Ceiba: tronco y copa">
+            <figcaption>Tronco robusto y copa amplia.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.2-Cjyccd0vk2Jit3QmdZAAHaE7?w=272&h=182&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Raíces tabulares de ceiba">
+            <figcaption>Raíces tabulares (contrafuertes).</figcaption>
+          </figure>
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.Bjw3_4qt7dLIiWWSiJ5z2gHaFc?w=245&h=182&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Detalle de copa de ceiba">
+            <figcaption>Detalle de copa y follaje.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.yPLcJSAYyejBPKQ_ZLtP6gHaFU?w=252&h=182&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Floración de ceiba">
+            <figcaption>Floración llamativa.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.LqPsDGsobdi20pQzYAlI_QHaFS?w=235&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Ceiba adulta">
+            <figcaption>Ejemplar adulto en zona abierta.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.V7XBWytdKHYiqZP7Nc6zTQHaEK?w=299&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Semillas con fibra kapok">
+            <figcaption>Semillas envueltas en kapok.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://th.bing.com/th/id/OIP.QPlonvp9SgmRnexvNrCxuwHaFc?w=250&h=184&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Ceiba en paisaje tropical">
+            <figcaption>Paisaje tropical con ceiba.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+  </main>
+</body>
+</html>

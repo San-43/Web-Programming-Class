@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student ID Lab — Embedded JS</title>
+<style>
+  :root{--bg:#0b1020;--fg:#eaf1ff;--card:#121831;--muted:#93a5c6;--accent:#6ee7ff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Arial,sans-serif}
+  .wrap{max-width:980px;margin:32px auto;padding:0 16px;display:grid;gap:16px}
+  header{display:flex;gap:12px;align-items:center}
+  header h1{margin:0;font-size:1.25rem}
+  .card{background:var(--card);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:14px}
+  .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  label{opacity:.9}
+  input{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--fg);min-width:200px}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#172445;color:var(--fg);border:1px solid rgba(255,255,255,.15);font-size:.9rem}
+  .stats{display:grid;grid-template-columns:repeat(2,minmax(160px,1fr));gap:10px;margin-top:10px}
+  .stat{background:#0f1730;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px}
+  .stat b{display:block;font-size:.95rem;margin-bottom:3px}
+  .flex{display:flex;gap:14px;flex-wrap:wrap}
+  .swatch{width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,.25)}
+  canvas{background:#0f1730;border:1px solid rgba(255,255,255,.2);border-radius:12px}
+  .barcode{display:flex;gap:2px;align-items:flex-end;height:90px;background:#0f1730;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:8px}
+  .bar{width:3px;height:80px;background:transparent;border-left:1px solid rgba(255,255,255,.06)}
+  .bar.on{background:#eaf1ff;border-left-color:#eaf1ff}
+  footer{opacity:.75;text-align:center;padding:18px 10px 28px}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="card">
+      <h1>Student ID Lab — Embedded JS</h1>
+      <span class="pill" id="mood">even / odd</span>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <div class="row">
+          <label for="name">Name</label>
+          <input id="name" value="SANDRO MARTINEZ PEREZ">
+          <label for="id">Student ID</label>
+          <input id="id" value="475218" inputmode="numeric">
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>Digits</b><span id="digits">—</span></div>
+          <div class="stat"><b>Sum of digits</b><span id="sum">—</span></div>
+          <div class="stat"><b>Digital root</b><span id="root">—</span></div>
+          <div class="stat"><b>Mod 7 • Mod 11</b><span id="mods">—</span></div>
+          <div class="stat"><b>Base-16 (hex)</b><span id="hex">—</span></div>
+          <div class="stat"><b>Base-36</b><span id="b36">—</span></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <b>Palette</b>
+          <div class="flex" style="margin-top:6px">
+            <div class="swatch" id="c1" title="Primary"></div>
+            <div class="swatch" id="c2" title="Secondary"></div>
+            <div class="swatch" id="c3" title="Accent"></div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="card">
+        <b>Identicon</b>
+        <div class="row" style="margin-top:8px">
+          <canvas id="icon" width="220" height="220" aria-label="Identicon"></canvas>
+        </div>
+        <div style="margin-top:12px">
+          <b>Pseudo-barcode</b>
+          <div id="barcode" class="barcode" aria-label="Decorative barcode"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>Generated locally in your browser. Edit the fields to see live updates.</footer>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const clamp = (n,min,max)=>Math.min(max,Math.max(min,n));
+
+  function toTitleCase(s){
+    return s.toLowerCase().replace(/\b\w+/g,w=>w[0].toUpperCase()+w.slice(1));
+  }
+
+  function sumDigits(s){ return (s.match(/\d/g)||[]).map(Number).reduce((a,b)=>a+b,0); }
+  function digitalRoot(n){ while(n>9){ n=String(n).split('').reduce((a,b)=>a+ +b,0);} return n; }
+  function modPair(n){ return [n%7, n%11]; }
+
+  function mulberry32(seed){
+    let t = seed>>>0;
+    return function(){
+      t += 0x6D2B79F5; let r = Math.imul(t ^ t>>>15, 1 | t);
+      r ^= r + Math.imul(r ^ r>>>7, 61 | r); return ((r ^ r>>>14) >>> 0) / 4294967296;
+    }
+  }
+
+  function hashSeed(str){
+    let h=2166136261>>>0;
+    for(const ch of str){ h^=ch.charCodeAt(0); h = Math.imul(h,16777619); }
+    return h>>>0;
+  }
+
+  function colorFromRand(rand){
+    const h = Math.floor(rand()*360);
+    const s = 50 + Math.floor(rand()*40);
+    const l = 45 + Math.floor(rand()*20);
+    return `hsl(${h} ${s}% ${l}%)`;
+  }
+
+  function renderIdenticon(id){
+    const seed = hashSeed(id);
+    const rand = mulberry32(seed);
+    const ctx = $('icon').getContext('2d');
+    const size = 5, cell = 42; // 5x5
+    ctx.clearRect(0,0,220,220);
+    const bg = '#0f1730';
+    ctx.fillStyle = bg; ctx.fillRect(0,0,220,220);
+    const col = colorFromRand(rand);
+    for(let y=0;y<size;y++){
+      for(let x=0;x<Math.ceil(size/2);x++){
+        const on = rand() > 0.5 ? 1 : 0;
+        const rx = size-1-x;
+        [x,rx].forEach(xx=>{
+          if(on){
+            ctx.fillStyle = col;
+            ctx.fillRect(xx*cell+2,y*cell+2,cell-4,cell-4);
+          }
+        });
+      }
+    }
+    return col;
+  }
+
+  function renderBarcode(id){
+    const box = $('barcode');
+    box.innerHTML = '';
+    const bits = Array.from(id).flatMap(d => parseInt(d,10).toString(2).padStart(4,'0').split(''));
+    bits.forEach((b,i)=>{
+      const span = document.createElement('span');
+      span.className = 'bar' + (b==='1' ? ' on' : '');
+      span.style.height = (70 + (i%5)*4) + 'px';
+      box.appendChild(span);
+    });
+  }
+
+  function renderAll(){
+    const rawName = $('name').value.trim();
+    const rawId = $('id').value.trim();
+    const name = toTitleCase(rawName);
+    $('name').value = name;
+
+    const idNum = parseInt(rawId.replace(/\D/g,''),10);
+    $('digits').textContent = rawId.length;
+    $('sum').textContent = sumDigits(rawId);
+    $('root').textContent = digitalRoot(sumDigits(rawId));
+    const [m7,m11] = Number.isFinite(idNum) ? modPair(idNum) : ['—','—'];
+    $('mods').textContent = `${m7} • ${m11}`;
+    $('hex').textContent = Number.isFinite(idNum) ? idNum.toString(16).toUpperCase() : '—';
+    $('b36').textContent = Number.isFinite(idNum) ? idNum.toString(36).toUpperCase() : '—';
+
+    $('mood').textContent = Number.isFinite(idNum) ? (idNum%2===0 ? 'even' : 'odd') : '—';
+    const primary = renderIdenticon(rawId || '0');
+    const r = mulberry32(hashSeed(rawId||'0'));
+    const c2 = colorFromRand(r()), c3 = colorFromRand(r());
+    $('c1').style.background = primary;
+    $('c2').style.background = c2;
+    $('c3').style.background = c3;
+
+    renderBarcode(rawId || '0');
+  }
+
+  $('name').addEventListener('input', renderAll);
+  $('id').addEventListener('input', renderAll);
+  renderAll();
+</script>
+</body>
+</html>

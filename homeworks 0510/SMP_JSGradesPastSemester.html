@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calificaciones — Enero–Junio 2025</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f8fb;color:#14202a}
+    .wrap{max-width:920px;margin:28px auto;padding:0 16px}
+    h1{margin:0 0 10px}
+    .card{background:#fff;border:1px solid #e5e9f0;border-radius:12px;padding:14px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #eef2f6;text-align:left}
+    th{background:#f3f6fb;font-weight:700}
+    tfoot td{background:#fafcff;font-weight:700}
+    .meta{color:#5b6b81;font-size:.92rem}
+    .ok{color:#0f9d58} .warn{color:#ff6f00} .bad{color:#d93025}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="card">
+      <h1>Enero–Junio 2025</h1>
+      <div class="meta">Historial del ciclo. Promedio calcula solo materias con calificación &gt; 0 y Res. ≠ NP.</div>
+    </header>
+
+    <section id="app" class="card" aria-live="polite"></section>
+  </main>
+
+  <script src="grades.js" defer></script>
+</body>
+</html>

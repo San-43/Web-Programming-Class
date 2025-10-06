@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porsche 911 GT3 RS — Paginación sin JS</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;line-height:1.6;color:#14202a;background:#f7fafc}
+a{text-decoration:none;color:#0f5fff}
+h1,h2{margin:0 0 10px}
+p{margin:0 0 10px}
+header{background:#111827;color:#fff;padding:18px 14px}
+.header-wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-badge{width:42px;height:42px;border-radius:8px;background:#0ea5e9;display:inline-flex;align-items:center;justify-content:center;font-weight:bold}
+.brand h1{font-size:1.2rem;letter-spacing:.3px}
+.tagline{opacity:.85;font-size:.92rem}
+.container{max-width:1100px;margin:18px auto 36px;padding:0 14px;display:flex;flex-direction:column;gap:18px}
+.pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+.pager .num{border:1px solid #cbd5e1;padding:8px 12px;border-radius:8px;background:#fff;cursor:pointer;font-size:.95rem;user-select:none}
+.pager .num.active{background:#0ea5e9;color:#fff;border-color:#0ea5e9;font-weight:bold}
+.page{display:none;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
+.flex{display:flex;gap:16px;flex-wrap:wrap}
+.col{flex:1 1 360px;min-width:260px}
+.card{border:1px solid #e5e7eb;border-radius:10px;padding:12px;background:#fdfefe}
+.badge{display:inline-block;background:#e0f2fe;color:#075985;padding:2px 8px;border-radius:999px;font-size:.8rem;margin-right:6px;white-space:nowrap}
+.kv{display:flex;flex-wrap:wrap;gap:10px}
+.kv div{flex:1 1 220px;min-width:200px;border:1px solid #e5e7eb;background:#f8fafc;border-radius:8px;padding:8px 10px}
+ul{margin:6px 0 0 18px}
+table{width:100%;border-collapse:collapse;font-size:.96rem;background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden}
+th,td{border-bottom:1px solid #e5e7eb;padding:10px;text-align:left}
+th{background:#f3f4f6}
+tr:last-child td{border-bottom:none}
+.gallery{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.gallery figure{margin:0;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;background:#fff;max-width:320px;flex:1 1 240px;display:flex;flex-direction:column}
+.gallery img{width:100%;height:180px;object-fit:cover;display:block}
+.gallery figcaption{padding:8px 10px;font-size:.9rem;color:#334155;background:#f8fafc}
+footer{text-align:center;color:#475569;padding:16px 10px 28px;font-size:.95rem}
+@media (max-width:480px){.brand h1{font-size:1rem}.tagline{font-size:.85rem}}
+#p1:checked~.pages .p1{display:block}
+#p2:checked~.pages .p2{display:block}
+#p3:checked~.pages .p3{display:block}
+#p4:checked~.pages .p4{display:block}
+#p5:checked~.pages .p5{display:block}
+#p6:checked~.pages .p6{display:block}
+#p1:checked~.pager-top label[for="p1"],#p2:checked~.pager-top label[for="p2"],#p3:checked~.pager-top label[for="p3"],#p4:checked~.pager-top label[for="p4"],#p5:checked~.pager-top label[for="p5"],#p6:checked~.pager-top label[for="p6"]{background:#0ea5e9;color:#fff;border-color:#0ea5e9;font-weight:bold}
+#p1:checked~.pager-bottom label[for="p1"],#p2:checked~.pager-bottom label[for="p2"],#p3:checked~.pager-bottom label[for="p3"],#p4:checked~.pager-bottom label[for="p4"],#p5:checked~.pager-bottom label[for="p5"],#p6:checked~.pager-bottom label[for="p6"]{background:#0ea5e9;color:#fff;border-color:#0ea5e9;font-weight:bold}
+input[type=radio]{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-wrap">
+    <div class="brand">
+      <div class="brand-badge">GT3</div>
+      <div>
+        <h1>Porsche 911 GT3 RS</h1>
+        <div class="tagline">Descripción general • Ficha técnica • Precio • Agencia • Versiones • Galería</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<input type="radio" name="page" id="p1" checked>
+<input type="radio" name="page" id="p2">
+<input type="radio" name="page" id="p3">
+<input type="radio" name="page" id="p4">
+<input type="radio" name="page" id="p5">
+<input type="radio" name="page" id="p6">
+
+<nav class="container pager pager-top" aria-label="Paginación superior">
+  <label class="num" for="p1">1</label>
+  <label class="num" for="p2">2</label>
+  <label class="num" for="p3">3</label>
+  <label class="num" for="p4">4</label>
+  <label class="num" for="p5">5</label>
+  <label class="num" for="p6">6</label>
+</nav>
+
+<main class="container pages">
+  <section class="page p1" aria-labelledby="pg1-title">
+    <h2 id="pg1-title">1) Descripción general</h2>
+    <div class="flex">
+      <div class="col">
+        <div class="card">
+          <p>El <strong>Porsche 911 GT3 RS</strong> es la versión más enfocada a pista dentro de la gama 911 con motor atmosférico. Su aerodinámica activa, suspensión específica y uso de materiales ligeros priorizan la precisión y la consistencia en circuito.</p>
+          <p>Incorpora alerón tipo “swan-neck”, elementos aerodinámicos ajustables, frenos de alto desempeño y un interior orientado al manejo: asientos tipo cubo y controles claros.</p>
+          <div class="kv" style="margin-top:10px">
+            <div><span class="badge">Enfoque</span>Pista / track-day</div>
+            <div><span class="badge">Configuración</span>Motor trasero, tracción trasera</div>
+            <div><span class="badge">Transmisión</span>PDK 7 velocidades</div>
+            <div><span class="badge">Aero</span>Alerón “swan-neck” y elementos activos</div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <figure class="card" style="padding:0;overflow:hidden">
+          <img src="https://th.bing.com/th/id/OIP.SmzlJ7lLSTWjWzPmADmOQAHaEK?w=292&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Porsche 911 GT3 RS vista frontal-lateral">
+          <figcaption style="padding:10px;font-size:.92rem">Carrocería ancha y aerodinámica extrema</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="page p2" aria-labelledby="pg2-title">
+    <h2 id="pg2-title">2) Ficha técnica</h2>
+    <div class="flex">
+      <div class="col">
+        <table aria-label="Especificaciones técnicas">
+          <tbody>
+            <tr><th>Motor</th><td>Bóxer 6 cilindros 4.0L atmosférico</td></tr>
+            <tr><th>Potencia</th><td>≈518 hp</td></tr>
+            <tr><th>Par motor</th><td>≈465 Nm</td></tr>
+            <tr><th>Transmisión</th><td>PDK 7 velocidades</td></tr>
+            <tr><th>Tracción</th><td>Trasera</td></tr>
+            <tr><th>0–100 km/h</th><td>≈3.2 s</td></tr>
+            <tr><th>Velocidad máx.</th><td>≈296 km/h</td></tr>
+            <tr><th>Frenos</th><td>Alto desempeño; opción PCCB</td></tr>
+            <tr><th>Chasis</th><td>Rigidez optimizada; paquete Weissach opcional</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <figure class="card" style="padding:0;overflow:hidden">
+          <img src="https://th.bing.com/th/id/OIP.Pu5CkGl24s4y98DEOdUMUQHaEK?w=287&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="GT3 RS en sala de exhibición">
+          <figcaption style="padding:10px;font-size:.92rem">Componentes y puesta a punto orientados a pista</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="page p3" aria-labelledby="pg3-title">
+    <h2 id="pg3-title">3) Precio</h2>
+    <p>El precio varía según país, tipo de cambio y equipamiento.</p>
+    <br>
+    <table aria-label="Ejemplo de precios">
+      <thead>
+        <tr>
+          <th>Versión</th><th>Moneda</th><th>Precio base</th><th>Opciones clave</th><th>Precio estimado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>911 GT3 RS</td><td>MXN</td><td>—</td><td>Weissach, PCCB, asientos cubo</td><td>$4,140,000</td></tr>
+        <tr><td>911 GT3 RS Weissach</td><td>MXN</td><td>—</td><td>Magnesio, carbono extendido</td><td>$5,040,000</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.92rem;color:#475569;margin-top:6px">Consulta a un concesionario autorizado para una cotización actualizada</p>
+  </section>
+
+  <section class="page p4" aria-labelledby="pg4-title">
+    <h2 id="pg4-title">4) Agencia</h2>
+    <div class="flex">
+      <div class="col">
+        <div class="card">
+          <h3 style="margin-bottom:6px">Concesionario oficial</h3>
+          <p><strong>Nombre:</strong> Porsche Center Santa Fe</p>
+          <p><strong>Dirección:</strong> Av. Vasco de Quiroga 3850, Lomas de Santa Fe, Álvaro Obregón, 05348 Ciudad de México, CDMX</p>
+          <p><strong>Teléfono:</strong> +52 55 7821 3046</p>
+          <p><strong>Correo:</strong> contacto@porsche-santafe.mx</p>
+          <p><strong>Horario:</strong> Lun–Sáb 09:00–19:00, Dom 11:00–17:00</p>
+          <p><strong>Servicios:</strong> Ventas, Postventa, Pruebas de manejo, Porsche Approved</p>
+        </div>
+      </div>
+      <div class="col">
+        <figure class="card" style="padding:0;overflow:hidden">
+          <img src="https://th.bing.com/th/id/OIP.1lb6gkUcHJf6KkF6MakB_AHaEO?w=337&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="GT3 RS frontal en pista">
+          <figcaption style="padding:10px;font-size:.92rem">Disponibilidad y tiempos de entrega sujetos a mercado</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="page p5" aria-labelledby="pg5-title">
+    <h2 id="pg5-title">5) Versiones</h2>
+    <div class="flex">
+      <div class="col">
+        <div class="card">
+          <h3 style="margin-bottom:6px">GT3 RS</h3>
+          <ul>
+            <li>Motor bóxer 4.0L NA ≈518 hp</li>
+            <li>Aerodinámica activa y frenos de alto desempeño</li>
+            <li>PDK 7 cambios</li>
+            <li>Asientos deportivos o tipo cubo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <h3 style="margin-bottom:6px">GT3 RS Weissach</h3>
+          <ul>
+            <li>Componentes en carbono y magnesio</li>
+            <li>Reducción de masas no suspendidas</li>
+            <li>Detalles exclusivos interior/exterior</li>
+            <li>Máximo enfoque a pista</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <p style="font-size:.92rem;color:#475569">Combinaciones de equipamiento varían por mercado</p>
+    </div>
+  </section>
+
+  <section class="page p6" aria-labelledby="pg6-title">
+    <h2 id="pg6-title">6) Galería de imágenes</h2>
+    <div class="gallery" style="margin-top:10px">
+      <figure>
+        <img src="https://th.bing.com/th/id/OIP.2RaZSBym5ElcGXOX8kYIcgHaEo?w=258&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Lateral en circuito">
+        <figcaption>Perfil con tomas de aire funcionales</figcaption>
+      </figure>
+      <figure>
+        <img src="https://th.bing.com/th/id/OIP.3YzOpvZ6FvUMizdGtw5D4wHaEK?w=302&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Alerón swan-neck">
+        <figcaption>Alerón “swan-neck” para carga eficiente</figcaption>
+      </figure>
+      <figure>
+        <img src="https://th.bing.com/th/id/OIP.zg_JAUVC9zvt7FYGEjQEHQHaEK?w=268&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Carbono y compuestos">
+        <figcaption>Uso de compuestos ligeros</figcaption>
+      </figure>
+      <figure>
+        <img src="https://th.bing.com/th/id/OIP.5rS0YSuZp7WSFSiqEXNJxAHaEK?w=303&h=180&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Interior asientos cubo">
+        <figcaption>Interior enfocado al manejo</figcaption>
+      </figure>
+      <figure>
+        <img src="https://th.bing.com/th/id/OIP.klGOk47ZnxHk49lmHh7u6wHaHa?w=182&h=181&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Frenos alto desempeño">
+        <figcaption>Frenos con opción PCCB</figcaption>
+      </figure>
+      <figure>
+        <img src="https://th.bing.com/th/id/OIP.ebWWquzT5S3DkRrLthVgWAHaEK?w=280&h=182&c=7&r=0&o=7&cb=12&pid=1.7&rm=3" alt="Trasera en pista">
+        <figcaption>Difusor y escape centrado</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<nav class="container pager pager-bottom" aria-label="Paginación inferior">
+  <label class="num" for="p1">1</label>
+  <label class="num" for="p2">2</label>
+  <label class="num" for="p3">3</label>
+  <label class="num" for="p4">4</label>
+  <label class="num" for="p5">5</label>
+  <label class="num" for="p6">6</label>
+</nav>
+
+<footer>
+  © 2025 — Página informativa con fines educativos. Las especificaciones y precios pueden variar por mercado.
+</footer>
+</body>
+</html>
