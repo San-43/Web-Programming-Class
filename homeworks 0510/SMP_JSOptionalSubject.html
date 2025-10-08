@@ -1,59 +1,138 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Materias del próximo semestre — Versión simple</title>
-<style>
-  *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f8fb;color:#151b26}
-  .wrap{max-width:680px;margin:28px auto;padding:0 16px;display:grid;gap:14px}
-  h1{margin:0} .card{background:#fff;border:1px solid #e6eaf0;border-radius:12px;padding:14px}
-  .item{display:flex;align-items:center;justify-content:space-between;border:1px solid #eef2f6;border-radius:10px;padding:10px;margin:8px 0}
-  .left{display:flex;gap:10px;align-items:center}
-  .name{font-weight:700} .meta{font-size:.9rem;color:#5a6b81}
-  .btns{display:flex;gap:8px;flex-wrap:wrap} button{padding:8px 12px;border-radius:10px;border:1px solid #cfd8e3;background:#f1f5fb;cursor:pointer}
-  button.primary{background:#2b7cff;color:#fff;border-color:#2b7cff}
-  .row{display:flex;justify-content:space-between;margin:6px 0}
-  .muted{color:#5a6b81}
-  .list{font-size:.95rem}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Materias del próximo semestre — Versión simple</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f8fb;
+      color: #151b26
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 28px auto;
+      padding: 0 16px;
+      display: grid;
+      gap: 14px
+    }
+
+    h1 {
+      margin: 0
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e6eaf0;
+      border-radius: 12px;
+      padding: 14px
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #eef2f6;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 8px 0
+    }
+
+    .left {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .name {
+      font-weight: 700
+    }
+
+    .meta {
+      font-size: .9rem;
+      color: #5a6b81
+    }
+
+    .btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    button {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid #cfd8e3;
+      background: #f1f5fb;
+      cursor: pointer
+    }
+
+    button.primary {
+      background: #2b7cff;
+      color: #fff;
+      border-color: #2b7cff
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0
+    }
+
+    .muted {
+      color: #5a6b81
+    }
+
+    .list {
+      font-size: .95rem
+    }
+  </style>
 </head>
+
 <body>
-<main class="wrap">
-  <header class="card">
-    <h1>Elige tus materias</h1>
-    <div class="muted">Marca 3 o 4 materias. Preseleccioné <b>Criptografía</b>.</div>
-  </header>
+  <main class="wrap">
+    <header class="card">
+      <h1>Elige tus materias</h1>
+      <div class="muted">Marca 3 o 4 materias. Preseleccioné <b>Criptografía</b>.</div>
+    </header>
 
-  <section class="card" id="list"></section>
+    <section class="card" id="list"></section>
 
-  <section class="card">
-    <div class="row"><b>Seleccionadas</b><span id="count">0</span></div>
-    <div class="row"><b>Créditos totales</b><span id="credits">0</span></div>
-    <div class="list" id="picked">—</div>
-    <div class="btns" style="margin-top:8px">
-      <button id="clear">Limpiar selección</button>
-      <button class="primary" id="reco">Sugerir 3 materias</button>
-    </div>
-  </section>
-</main>
+    <section class="card">
+      <div class="row"><b>Seleccionadas</b><span id="count">0</span></div>
+      <div class="row"><b>Créditos totales</b><span id="credits">0</span></div>
+      <div class="list" id="picked">—</div>
+      <div class="btns" style="margin-top:8px">
+        <button id="clear">Limpiar selección</button>
+        <button class="primary" id="reco">Sugerir 3 materias</button>
+      </div>
+    </section>
+  </main>
 
-<script>
-const materias = [
-  {id:'crypto', nombre:'Criptografía', creditos:4, horario:'Mar 10:00 • Jue 10:00', cat:'Seguridad', pre:true},
-  {id:'oodb',   nombre:'Bases de datos orientadas a objetos', creditos:3, horario:'Lun 12:00', cat:'Datos'},
-  {id:'net',    nombre:'Redes de computadoras', creditos:3, horario:'Mié 09:00', cat:'Sistemas'},
-  {id:'so',     nombre:'Sistemas operativos', creditos:4, horario:'Vie 11:00', cat:'Sistemas'}
-];
+  <script>
+    const materias = [
+      { id: 'crypto', nombre: 'Criptografía', creditos: 4, horario: 'Mar 10:00 • Jue 10:00', cat: 'Seguridad', pre: true },
+      { id: 'oodb', nombre: 'Bases de datos orientadas a objetos', creditos: 3, horario: 'Lun 12:00', cat: 'Datos' },
+      { id: 'net', nombre: 'Redes de computadoras', creditos: 3, horario: 'Mié 09:00', cat: 'Sistemas' },
+      { id: 'so', nombre: 'Sistemas operativos', creditos: 4, horario: 'Vie 11:00', cat: 'Sistemas' }
+    ];
 
-const $ = id => document.getElementById(id);
-const list = $('list');
+    const $ = id => document.getElementById(id);
+    const list = $('list');
 
-function renderList(){
-  list.innerHTML = materias.map(m => `
+    function renderList() {
+      list.innerHTML = materias.map(m => `
     <div class="item">
       <div class="left">
-        <input type="checkbox" id="${m.id}" ${m.pre?'checked':''}>
+        <input type="checkbox" id="${m.id}" ${m.pre ? 'checked' : ''}>
         <label for="${m.id}">
           <div class="name">${m.nombre}</div>
           <div class="meta">${m.cat} • ${m.creditos} cr • ${m.horario}</div>
@@ -62,38 +141,39 @@ function renderList(){
       <div class="muted">${m.id.toUpperCase()}</div>
     </div>
   `).join('');
-  list.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', update));
-}
+      list.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', update));
+    }
 
-function seleccion(){
-  const ids = [...list.querySelectorAll('input[type=checkbox]')].filter(i=>i.checked).map(i=>i.id);
-  const sel = materias.filter(m=>ids.includes(m.id));
-  const cred = sel.reduce((a,b)=>a+b.creditos,0);
-  return {sel, cred};
-}
+    function seleccion() {
+      const ids = [...list.querySelectorAll('input[type=checkbox]')].filter(i => i.checked).map(i => i.id);
+      const sel = materias.filter(m => ids.includes(m.id));
+      const cred = sel.reduce((a, b) => a + b.creditos, 0);
+      return { sel, cred };
+    }
 
-function update(){
-  const {sel, cred} = seleccion();
-  $('count').textContent = sel.length;
-  $('credits').textContent = cred;
-  $('picked').innerHTML = sel.length
-    ? sel.map(m=>`• <b>${m.nombre}</b> <span class="muted">(${m.creditos} cr, ${m.horario})</span>`).join('<br>')
-    : '—';
-}
+    function update() {
+      const { sel, cred } = seleccion();
+      $('count').textContent = sel.length;
+      $('credits').textContent = cred;
+      $('picked').innerHTML = sel.length
+        ? sel.map(m => `• <b>${m.nombre}</b> <span class="muted">(${m.creditos} cr, ${m.horario})</span>`).join('<br>')
+        : '—';
+    }
 
-$('clear').addEventListener('click', ()=>{
-  list.querySelectorAll('input[type=checkbox]').forEach(i=>i.checked=false);
-  update();
-});
+    $('clear').addEventListener('click', () => {
+      list.querySelectorAll('input[type=checkbox]').forEach(i => i.checked = false);
+      update();
+    });
 
-$('reco').addEventListener('click', ()=>{
-  list.querySelectorAll('input[type=checkbox]').forEach(i=>i.checked=false);
-  ['crypto','oodb','net'].forEach(id=>{ const el = document.getElementById(id); if(el) el.checked = true; });
-  update();
-});
+    $('reco').addEventListener('click', () => {
+      list.querySelectorAll('input[type=checkbox]').forEach(i => i.checked = false);
+      ['crypto', 'oodb', 'net'].forEach(id => { const el = document.getElementById(id); if (el) el.checked = true; });
+      update();
+    });
 
-renderList();
-update();
-</script>
+    renderList();
+    update();
+  </script>
 </body>
+
 </html>

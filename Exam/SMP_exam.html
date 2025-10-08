@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simulador de Inversión</title>
+    <link rel="stylesheet" href="SMP_exam.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>Simulador de Inversión</h1>
+        <p>Ingresa el tipo de inversión, el monto y los años. Se calcula un <b>riesgo</b> y un <b>retorno anual
+                esperado</b> con reglas simples y recomendaciones.</p>
+
+        <div class="grid">
+            <section class="card">
+                <div class="row">
+                    <label for="tipo">Tipo de inversión</label>
+                    <select id="tipo">
+                        <option value="acciones">Acciones</option>
+                        <option value="bonos">Bonos</option>
+                        <option value="cripto">Criptomonedas</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="monto">Monto (MXN)</label>
+                    <input id="monto" type="number" min="100" step="100" placeholder="10000" value="10000">
+                </div>
+                <div class="row">
+                    <label for="anios">Horizonte (años)</label>
+                    <input id="anios" type="number" min="0" max="30" step="1" value="5">
+                </div>
+                <div class="btns">
+                    <button id="calc">Calcular</button>
+                    <button id="reset" class="secondary" type="button">Reiniciar</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px">
+                    <span class="badge">Informe</span>
+                    <span id="tipoLbl" class="badge">—</span>
+                </div>
+                <div class="results">
+                    <span>Riesgo ajustado</span>
+                    <b id="riesgo">—</b>
+                </div>
+                <div class="results" style="margin-top:8px">
+                    <span>Retorno anual esperado</span>
+                    <b id="retorno">—</b>
+                </div>
+                <hr style="border:0;border-top:1px solid #1f2937;margin:12px 0">
+                <div class="results">
+                    <span>Recomendación</span>
+                    <div id="reco">—</div>
+                </div>
+                <p class="note" style="margin-top:12px">Creado por Sandro Martínez Pérez</p>
+                <p class="note" style="margin-top: auto;">Email: ma475218@uaeh.edu.mx</p>
+                <p class="note" style="margin-top: auto;">Github: 
+                    <a href="https://github.com/San-43" style="color: red">San-43</a>      
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="exam.js" defer></script>
+</body>
+</html>

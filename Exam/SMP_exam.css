@@ -1,0 +1,121 @@
+:root {
+    --bg: #0b1020;
+    --fg: #eaf1ff;
+    --text: white;
+    --card: #121831;
+    --brand: blue;
+    --muted: #93a5c6;
+    --accent: #6ee7ff;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, Segoe UI, Roboto, Arial;
+    background: var(--bg);
+    color: var(--text)
+}
+
+.wrap {
+    max-width: 880px;
+    margin: auto;
+    padding: 16px
+}
+
+h1 {
+    font-size: 1.25rem;
+    margin: 0 0 8px;
+    color: #fff
+}
+
+p {
+    color: var(--muted);
+    margin: 0 0 16px
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr
+}
+
+@media(min-width:860px) {
+    .grid {
+        grid-template-columns: 360px 1fr
+    }
+}
+
+.card {
+    background: var(--card);
+    padding: 16px;
+    border: 1px solid #1f2937;
+    border-radius: 12px
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600
+}
+
+select,
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #293245;
+    background: #0b1320;
+    color: var(--text)
+}
+
+.row {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap
+}
+
+button {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer
+}
+
+button.secondary {
+    background: #374151
+}
+
+.results {
+    display: grid;
+    gap: 8px
+}
+
+.results b {
+    margin-top: 6px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #0b1320;
+    border: 1px solid #23304a;
+    color: var(--muted);
+    font-size: .85rem
+}
+
+.note {
+    font-size: .9rem
+}
