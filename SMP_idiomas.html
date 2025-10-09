@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Days of the Week in German and French</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #c9e4f9, #f9e4ec);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    select, button {
+      font-size: 16px;
+      margin: 10px;
+      padding: 8px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🗓️ Days of the Week Viewer</h2>
+
+  <label>Select Gender:</label>
+  <select id="gender">
+    <option value="">--Choose--</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+
+  <label>Select Day:</label>
+  <select id="day">
+    <option value="">--Select Day--</option>
+  </select>
+
+  <br>
+  <button onclick="showDay()">Show Day</button>
+
+  <div id="output"></div>
+
+  <script>
+    const g = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+    const f = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+    let index = 0;
+
+
+    for (let i = 0; i < 7; i++) {
+        let opt = document.createElement("option");
+        opt.value = i;
+        opt.text = `Day index ${i + 1}`;
+        document.getElementById("day").appendChild(opt);
+    }
+
+    function showDay() {
+        const output = document.getElementById("output");
+        const selectedDay = document.getElementById("day").value;
+        const gender = document.getElementById("gender").value;
+
+        if (selectedDay === "") {
+            output.textContent = "Please select a day.";
+            return;
+        }
+
+        let dayName = "";
+        if (gender === "male") {
+            dayName = g[selectedDay];
+        } else if (gender === "female") {
+            dayName = f[selectedDay];
+        }
+
+        output.textContent = `Selected Day: ${dayName}`;
+    }
+  </script>
+
+</body>
+</html>
