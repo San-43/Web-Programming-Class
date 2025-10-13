@@ -10,14 +10,61 @@
 <body>
     <h1>Two dice simulator</h1>
     <button onclick="rollDice()">Roll Dice</button>
-    <p id="result"></p>
+    <div id="result"></div>
 
     <script>
-        function rollDice() {
-            const die1 = Math.floor(Math.random() * 6) + 1;
-            const die2 = Math.floor(Math.random() * 6) + 1;
+        const players = ['Player 1', 'Player 2'];
 
-            document.getElementById('result').innerText = `Die 1: ${die1}, Die 2: ${die2}, Winner ${die1 > die2 ? 'Player 1' : die2 > die1 ? 'Player 2' : 'It\'s a tie!'}`;
+        function rollDie() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        function rollDice() {
+            const playerWins = [0, 0];
+            const roundSummaries = [];
+            let rounds = 2;
+            while(rounds--) {
+                const die1 = rollDie();
+                const die2 = rollDie();
+
+                let roundResult = '';
+                if (die1 > die2) {
+                    playerWins[0]++;
+                    roundResult = `${players[0]} wins the round!`;
+                } else if (die2 > die1) {
+                    playerWins[1]++;
+                    roundResult = `${players[1]} wins the round!`;
+                } else {
+                    roundResult = "It's a tie!";
+                }
+
+                roundSummaries.push(`
+                    <div>
+                        <h2>Round ${2 - rounds}</h2>
+                        <p>${players[0]} rolled: ${die1}</p>
+                        <p>${players[1]} rolled: ${die2}</p>
+                        <p>${roundResult}</p>
+                    </div>
+                `);
+            }
+
+            let overallWinner = 'It\'s a tie!';
+            if (playerWins[0] > playerWins[1]) {
+                overallWinner = `${players[0]} wins!`;
+            } else if (playerWins[1] > playerWins[0]) {
+                overallWinner = `${players[1]} wins!`;
+            }
+
+            roundSummaries.push(`
+                <div>
+                    <h2>Final Result</h2>
+                    <p>${players[0]} won ${playerWins[0]} round(s).</p>
+                    <p>${players[1]} won ${playerWins[1]} round(s).</p>
+                    <p><strong>${overallWinner}</strong></p>
+                </div>
+            `);
+
+            document.getElementById('result').innerHTML = roundSummaries.join('');
         }
     </script>
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOWER NUMBER</title>
+</head>
+<body>
+    <h1>Find the Lower and Maximum Number</h1>
+    <form id="numberForm">
+        <label for="num1">Enter first number:</label>
+        <input type="number" id="num1" required>
+        <br>
+        <label for="num2">Enter second number:</label>
+        <input type="number" id="num2" required>
+        <br>
+        <label for="num3">Enter third number:</label>
+        <input type="number" id="num3" required>
+        <br>
+        <label for="num4">Enter fourth number:</label>
+        <input type="number" id="num4" required>
+        <br>
+        <label for="num5">Enter fifth number:</label>
+        <input type="number" id="num5" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="maximum"></div>
+    <div id="minimum"></div>
+
+    <script>
+        document.getElementById('numberForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const numbers = [
+                parseFloat(document.getElementById('num1').value),
+                parseFloat(document.getElementById('num2').value),
+                parseFloat(document.getElementById('num3').value),
+                parseFloat(document.getElementById('num4').value),
+                parseFloat(document.getElementById('num5').value)
+            ];
+            const lowerNumber = Math.min(...numbers);
+            const higherNumber = Math.max(...numbers);
+            document.getElementById('minimum').innerText = 'The lower number is: ' + lowerNumber;
+            document.getElementById('maximum').innerText = 'The higher number is: ' + higherNumber;
+        });
+    </script>
+</body>
+</html>

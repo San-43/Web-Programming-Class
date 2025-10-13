@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo While y Do While</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #c0eaff, #f5faff);
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #006699;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #006699;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004466;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      background-color: #f0f9ff;
+      padding: 15px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bucles While y Do...While</h1>
+  <p>Haz clic en un botón para ver los números del 1 al 10:</p>
+
+  <button onclick="usarWhile()">Usar While</button>
+  <button onclick="usarDoWhile()">Usar Do...While</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function usarWhile() {
+      let i = 1;
+      let texto = "<strong>While Loop:</strong><br>";
+      while (i <= 10) {
+        texto += i + " ";
+        i++;
+      }
+      document.getElementById("resultado").innerHTML = texto;
+    }
+
+    function usarDoWhile() {
+      let i = 1;
+      let texto = "<strong>Do...While Loop:</strong><br>";
+      do {
+        texto += i + " ";
+        i++;
+      } while (i <= 10);
+      document.getElementById("resultado").innerHTML = texto;
+    }
+  </script>
+
+</body>
+</html>
