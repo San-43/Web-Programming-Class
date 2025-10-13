@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two dice simulator</title>
+</head>
+
+<body>
+    <h1>Two dice simulator</h1>
+    <button onclick="rollDice()">Roll Dice</button>
+    <p id="result"></p>
+
+    <script>
+        function rollDice() {
+            const die1 = Math.floor(Math.random() * 6) + 1;
+            const die2 = Math.floor(Math.random() * 6) + 1;
+
+            document.getElementById('result').innerText = `Die 1: ${die1}, Die 2: ${die2}, Winner ${die1 > die2 ? 'Player 1' : die2 > die1 ? 'Player 2' : 'It\'s a tie!'}`;
+        }
+    </script>
+
+</body>
+
+</html>
