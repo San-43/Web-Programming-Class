@@ -1,19 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess 3 of 5 Words</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivina palabras</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fafafa; color: #111; margin: 16px; }
+    h1 { margin: 8px 0; }
+    .galeria { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .item { border: 1px solid #ccc; background: #fff; padding: 8px; width: 230px; }
+    .item img { width: 100%; height: 150px; object-fit: cover; border: 1px solid #ddd; }
+    .controles { display: flex; gap: 8px; margin-top: 6px; }
+    .controles input { flex: 1; padding: 6px; }
+    .msg { font-size: 0.9rem; margin-top: 4px; min-height: 20px; }
+    .ok { color: #0b6b2a; }
+    .bad { color: #a10000; }
+    .barra { border: 1px dashed #aaa; padding: 8px; margin: 12px 0; background: #f4f4f4; }
+    .pie { font-size: 0.85rem; color: #444; margin-top: 12px; }
+  </style>
 </head>
 <body>
-    <h1>Guess 3 of 5 Words</h1>
-    <p>Try to guess 3 words from the following pictures:</p>
-    <ul
-    </ul>
-    <div id="result"></div>
+  <h1>Juego: Adivina palabras</h1>
+  <div class="barra">
+    <span id="contador">Aciertos: 0 / 5 (Objetivo: 3)</span> · 
+    <span id="estado">En curso…</span>
+  </div>
 
-    <script>
-    </script>
-    
+  <div id="galeria" class="galeria"></div>
+
+  <div class="barra">
+    <button id="btnComprobar" onclick="comprobar()">Comprobar respuestas</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+  </div>
+
+  <div class="pie">
+    Escribe una palabra por imagen. La comparación es en minúsculas y sin acentos.
+  </div>
+
+  <script>
+    var imagenes = [
+      "https://apod.nasa.gov/apod/image/2211/Butterfly_HubbleOstling_3656.jpg",
+      "https://tse1.mm.bing.net/th/id/OIP.S_scPB4fnACvymTJC0qdhQHaHv?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "https://static.nationalgeographicla.com/files/styles/image_3200/public/951.webp?w=1190&h=894",
+      "https://static.nationalgeographicla.com/files/styles/image_3200/public/1227.webp?w=1190&h=894",
+      "https://static.nationalgeographicla.com/files/styles/image_3200/public/1129.webp?w=1190&h=894"
+    ];
+    var pl = ["mariposa", "anillo", "esquimal", "aguila", "orion"];
+    var good = [false, false, false, false, false];
+
+    function init() {
+      var html = "";
+      for (var i = 0; i < 5; i++) {
+        html += '<div class="item">';
+        html += '  <img src="' + imagenes[i] + '" alt="Imagen ' + (i+1) + '">';
+        html += '  <div class="controles">';
+        html += '    <input id="g_' + i + '" type="text" placeholder="Tu palabra..." />';
+        html += '  </div>';
+        html += '  <div id="m_' + i + '" class="msg"></div>';
+        html += '</div>';
+      }
+      document.getElementById("galeria").innerHTML = html;
+    }
+
+    function comprobar() {
+      var sum = 0;
+      for (var i = 0; i < 5; i++) {
+        var val = document.getElementById("g_" + i).value;
+        var msg = document.getElementById("m_" + i);
+        var ok = val === pl[i];
+        if (ok) {
+          good[i] = true;
+          msg.innerHTML = '<span class="ok">✔ ¡Correcto!</span>';
+        } else {
+          good[i] = false;
+          if (val && val.length > 0) {
+            msg.innerHTML = '<span class="bad">✘ Intenta de nuevo</span>';
+          } else {
+            msg.innerHTML = "";
+          }
+        }
+        sum = sum + (good[i] ? 1 : 0);
+      }
+      document.getElementById("contador").innerHTML = "Aciertos: " + sum + " / 5 (Objetivo: 3)";
+      if (sum >= 3) {
+        document.getElementById("estado").innerHTML = "🎉 ¡Ganaste!";
+      } else {
+        document.getElementById("estado").innerHTML = "En curso…";
+      }
+    }
+
+    function reiniciar() {
+      good = [false, false, false, false, false];
+      init();
+      document.getElementById("contador").innerHTML = "Aciertos: 0 / 5 (Objetivo: 3)";
+      document.getElementById("estado").innerHTML = "En curso…";
+      document.getElementById("btnComprobar").disabled = false;
+    }
+
+    init();
+  </script>
 </body>
 </html>
