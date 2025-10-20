@@ -16,9 +16,5 @@ shuffle($dias);
       <li><?= htmlspecialchars($d, ENT_QUOTES, 'UTF-8') ?></li>
     <?php endforeach; ?>
   </ul>
-
-  <form method="get">
-    <button type="submit">Otro orden</button>
-  </form>
 </body>
 </html>
