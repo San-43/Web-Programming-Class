@@ -5,27 +5,27 @@ import reactLogo from "./assets/react.svg";
 
 const content = [
   [
-    "React is extremely popular",
-    "It makes building complex, interactive UIs a breeze",
-    "It's powerful & flexible",
-    "It has a very active and versatile ecosystem"
+    "React es extremadamente popular",
+    "Hace que construir interfaces complejas e interactivas sea muy sencillo",
+    "Es potente y flexible",
+    "Tiene un ecosistema muy activo y versátil"
   ],
   [
-    "Components, JSX & Props",
-    "State",
-    "Hooks (e.g., useEffect())",
-    "Dynamic rendering"
+    "Componentes, JSX y propiedades (props)",
+    "Estado",
+    "Hooks (p. ej., useEffect())",
+    "Renderizado dinámico"
   ],
   [
-    "Official web page (react.dev)",
-    "Next.js (Fullstack framework)",
-    "React Native (build native mobile apps with React)"
+    "Página web oficial (react.dev)",
+    "Next.js (framework full-stack)",
+    "React Native (crea apps móviles nativas con React)"
   ],
   [
-    "Vanilla JavaScript requires imperative programming",
-    "Imperative Programming: You define all the steps needed to achieve a result",
-    "React on the other hand embraces declarative programming",
-    "With React, you define the goal and React figures out how to get there"
+    "JavaScript puro requiere programación imperativa",
+    "Programación imperativa: defines todos los pasos necesarios para lograr un resultado",
+    "React, en cambio, adopta la programación declarativa",
+    "Con React, defines el objetivo y React determina cómo llegar a él"
   ]
 ];
 
@@ -35,10 +35,10 @@ export default function App() {
   return (
     <div>
       <header>
-        <img src={reactLogo} alt="React logo" />
+        <img src={reactLogo} alt="Logo de React" />
         <div>
           <h1>React.js</h1>
-          <p>i.e., using the React library for rendering the UI</p>
+          <p>es decir, usar la biblioteca React para renderizar la interfaz</p>
         </div>
       </header>
 
@@ -48,25 +48,25 @@ export default function App() {
             className={activeContentIndex === 0 ? "active" : ""}
             onClick={() => setActiveContentIndex(0)}
           >
-            Why React?
+            ¿Por qué React?
           </button>
           <button
             className={activeContentIndex === 1 ? "active" : ""}
             onClick={() => setActiveContentIndex(1)}
           >
-            Core Features
+            Características clave
           </button>
           <button
             className={activeContentIndex === 2 ? "active" : ""}
             onClick={() => setActiveContentIndex(2)}
           >
-            Related Resources
+            Recursos relacionados
           </button>
           <button
             className={activeContentIndex === 3 ? "active" : ""}
             onClick={() => setActiveContentIndex(3)}
           >
-            React vs JS
+            React vs. JavaScript
           </button>
         </menu>
         <div id="tab-content">
