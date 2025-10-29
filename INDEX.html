@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Web</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Agregar un registro
+        <form action="C-Crud.php" method="POST">
+            <br> Creacion de clientes
+            <br> Id del cliente:
+            <input type="text" name="idcliente" required>
+            <br> Nombre del cliente:
+            <input type="text" name="nomcliente" required>
+            <br> Apellido del cliente:
+            <input type="text" name="apcliente" required>
+            <br>
+            <input type="submit" value="Agregar registro">
+        </form>
+        <form action="R-Crud.php">
+            <input type="submit" value="Mostrar">
+        </form>
+
+        <form action="R-Crud-T1.php">
+            <input type="submit" value="Consultar en Tabla">
+        </form>
+        <form action="D-Crud.php" method="POST">
+            <input type="text" name="elid"><br>
+            <input type="submit" value="Eliminar registro">
+        </form>
+
+        <form action="U-Crud.php" method="POST">
+            <br>Actualizacion de clientes <br>
+            ID del cliente a modificar:
+            <input type="text" name="idcliente" required>
+            <br> NOMBRE nuevo:
+            <input type="text" name="nomcliente" required>
+            <br> APELLIDO nuevo:
+            <input type="text" name="apcliente" required>
+            <br>
+            <input type="submit" value="Actualizar registro">
+        </form>
+        </h1>
+    </div>
+    
+</body>
+</html>
