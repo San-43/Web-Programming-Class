@@ -39,8 +39,13 @@ function Profile() {
   );
 }
 
+export function Welcome(props) {
+  return <h1>Hola, {props.name}</h1>;
+}
+
 export default function Gallery() {
   return (
+    <Welcome name="Pepito" />
     <section>
       <h1>Científicos increíbles</h1>
       <Profile />
@@ -50,6 +55,8 @@ export default function Gallery() {
   );
 }
 */
+
+
 export default function App() {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
 
